@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-3">
+        <app-todo-add 
+            [id]="todos.at(-1)?.sno"
+            (TodoAdd)="TodoAdd($event)"></app-todo-add>
+    </div>
+    <div class="col-md-9">
+        <h1 class="p-4 text-center">My Todo List</h1>
+        <ng-container *ngIf="todos.length;then TodoList ;else NoTodo"></ng-container>
+    </div>
+</div>
+
+
+<ng-template #TodoList>
+    <div class="row" >
+        <div class="col-md-6" *ngFor="let todo of todos">
+            <app-todo-item 
+                [todo]="todo"
+                (TodoDelete)="TodoDelete($event)"
+                (TodoComplete)="TodoComplete($event)"
+                ></app-todo-item>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #NoTodo>
+    <h5 class="p-4 text-center">No Todo found</h5>
+</ng-template>
+

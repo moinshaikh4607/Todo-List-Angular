@@ -1,0 +1,19 @@
+<div class="card m-2">
+    <div class="card-header">
+        {{todo.sno}}. {{todo.title}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">
+            {{todo.title}}
+            <span class="badge bg-{{todo.active?'secondary':'success'}}">{{todo.active?"Pendding":"Complete"}} </span>
+        </h5>
+        <p class="card-text">{{todo.desc}} </p>
+        <button 
+            class="btn {{todo.active?'btn-primary':'btn-success'}} m-1"
+            (click)="onComplete(todo)"
+            >{{todo.active?"Mark as Complete":"Restart"}}</button>
+        <button 
+            class="btn btn-danger m-1" 
+            (click)="onDelete(todo)">Delete</button>
+    </div>
+</div>
